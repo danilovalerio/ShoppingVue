@@ -36,7 +36,7 @@ export default {
 
   computed: {
     produtos() {
-      return this.$store.produtos
+      return this.$store.state.produtos
     }
   },
 
