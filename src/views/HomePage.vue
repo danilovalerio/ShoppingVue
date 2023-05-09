@@ -3,7 +3,8 @@
     <div class="products">
       <div 
       v-for="(produto, index) in this.produtos" :key="index"
-      class="product">
+      class="product"
+      :class="{inBag:produtoNoCarrinho(produto)}">
         <div class="product-image" :style="{backgroundImage: 'url('+ produto.image +')'}"></div>
         <h4>{{produto.title}}</h4>
         <p class="price">R$ {{produto.price.toFixed(2)}}</p>
