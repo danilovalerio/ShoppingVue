@@ -2,17 +2,17 @@
   <div class="basket">
     <div class="items">
 
-      <div class="item">
-        <div class="remove">Remover Produto</div>
-        <div class="photo"><img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt=""></div>
-        <div class="description">Mens Casual Premium Slim Fit T-Shirts </div>
+      <div v-for="(produto, index) in produtosNaSacola" :key="index" class="item">
+        <div class="remove" @click="this.$store.dispatch('removeProdutoDoCarrinho',produto.id)">Remover Produto</div>
+        <div class="photo"><img :src="produto.image" alt=""></div>
+        <div class="description">{{produto.title}} </div>
         <div class="price">
           <span class="quantity-area">
-            <button disabled="">-</button>
-            <span class="quantity">1</span>
-            <button>+</button>
+            <button :disabled="produto.quantity <= 1" @click="produto.quantity--">-</button>
+            <span class="quantity">{{produto.quantity}}</span>
+            <button @click="produto.quantity++">+</button>
           </span>
-          <span class="amount">R$ 22.30</span>
+          <span class="amount">{{(produto.price * produto.quantity).toFixed(2)}}</span>
         </div>
       </div>
       <div class="grand-total"> Total do pedido: R$ 22.30</div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 
 export default {
   name: 'ShoppingBasket',
@@ -29,6 +30,10 @@ export default {
   methods: {
    
   },
+
+  computed: mapState([
+    'produtosNaSacola'
+  ]),
  
 }
 </script>
