@@ -17,12 +17,12 @@ export default createStore({
 
     carregarProdutos({ commit }) {
       axios
-            .get('https://fakestoreapi.com/products')
-            .then(response => {
-              //para usar a mutacao 'carregarProdutos' tem que ser o commit
-                //console.log(response.data)
-                commit('carregarProdutos', response.data)
-            })
+        .get('https://fakestoreapi.com/products')
+        .then(response => {
+          //para usar a mutacao 'carregarProdutos' tem que ser o commit
+          //console.log(response.data)
+          commit('carregarProdutos', response.data)
+        })
     }
 
   },
