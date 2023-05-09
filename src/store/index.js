@@ -15,7 +15,7 @@ export default createStore({
   //actions são responsáveis por alterar as mutations que por sua vez alteram o state
   actions: {
 
-    carregarProdutos() {
+    carregarProdutos({ commit }) {
       axios
             .get('https://fakestoreapi.com/products')
             .then(response => {
