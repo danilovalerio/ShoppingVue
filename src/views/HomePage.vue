@@ -7,7 +7,12 @@
         <div class="product-image" :style="{backgroundImage: 'url('+ produto.image +')'}"></div>
         <h4>{{produto.title}}</h4>
         <p class="price">R$ {{produto.price.toFixed(2)}}</p>
-        <button @click="addProdutoAoCarrinho(produto)">Adicionar ao carrinho</button>
+        <button 
+        v-if="!produtoNoCarrinho(produto)"
+        @click="addProdutoAoCarrinho(produto)">Adicionar ao carrinho</button>
+        <button 
+        v-else class="remove"
+        @click="addProdutoAoCarrinho(produto)">Remover do carrinho</button>
       </div>
     </div>
   </div>
@@ -39,6 +44,9 @@ export default {
       produto.quantity = 1
       this.$store.dispatch('addProdutoAoCarrinho', produto)
       console.log(this.$store.state.produtosNaSacola)
+    },
+    produtoNoCarrinho(produto) {
+      return this.produtosNaSacola.find(item => item.id == produto.id)
     }
    
   }
