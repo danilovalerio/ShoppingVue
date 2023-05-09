@@ -32,15 +32,10 @@ export default {
     }
   },
 
-  computed: {
-    produtos() {
-      return this.$store.state.produtos
-    },
-
-    produtosNaSacola() {
-      return this.$store.state.produtosNaSacola
-    }
-  },
+  computed: 
+    mapState([
+      'produtos', 'produtosNaSacola'
+    ]),
 
   methods: {
     addProdutoAoCarrinho(produto){
