@@ -7,7 +7,7 @@
         <div class="product-image" :style="{backgroundImage: 'url('+ produto.image +')'}"></div>
         <h4>{{produto.title}}</h4>
         <p class="price">R$ {{produto.price.toFixed(2)}}</p>
-        <button>Adicionar ao carrinho</button>
+        <button @click="addProdutoAoCarrinho(produto)">Adicionar ao carrinho</button>
       </div>
     </div>
   </div>
@@ -26,10 +26,20 @@ export default {
   computed: {
     produtos() {
       return this.$store.state.produtos
+    },
+
+    produtosNaSacola() {
+      return this.$store.state.produtosNaSacola
     }
   },
 
   methods: {
+    addProdutoAoCarrinho(produto){
+      //adiciona a propriedade 1 por default
+      produto.quantity = 1
+      this.$store.dispatch('addProdutoAoCarrinho', produto)
+      console.log(this.$store.state.produtosNaSacola)
+    }
    
   }
 }
