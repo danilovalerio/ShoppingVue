@@ -3,12 +3,13 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    produtos: [1,2,3]
+    produtos: []
   },
   mutations: {
     //o 1 argumento sempre será state para termos acesso aos dados
     carregarProdutos(state, produtos) {
-
+      console.log(produtos)
+      state.produtos = produtos
     }
   },
   //actions são responsáveis por alterar as mutations que por sua vez alteram o state
