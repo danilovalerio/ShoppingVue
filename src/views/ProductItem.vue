@@ -6,9 +6,8 @@
 
 <script>
 export default {
-  name: "ProductItem",
+  name: 'ProductItem',
 
-  methods: {},
 };
 </script>
 

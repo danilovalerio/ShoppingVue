@@ -2,13 +2,12 @@
 <div id="nav">
     <router-link to="/">Início</router-link> -
     <router-link to="/basket">Carrinho ({{this.totalDeItensNaSacola.length}})</router-link> -
-    <router-link to="/product">Produto</router-link>
+    <router-link to="/produto">Produto</router-link>
 </div>
 <router-view />
 </template>
 
 <script>
-
 export default {
 
     created() {
@@ -18,8 +17,7 @@ export default {
         totalDeItensNaSacola() {
             return this.$store.state.produtosNaSacola
         }
-    }
-
+    },
 }
 </script>
 

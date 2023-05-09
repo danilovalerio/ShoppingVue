@@ -15,10 +15,10 @@ const routes = [
     component: Basket
   },
   {
-    path: '/product',
+    path: '/produto',
     name: 'ProductItem',
     component: ProductItem
-  },  
+  }
 ]
 
 const router = createRouter({
