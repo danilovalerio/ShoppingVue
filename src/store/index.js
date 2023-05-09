@@ -14,6 +14,11 @@ export default createStore({
     },
     addProdutoAoCarrinho(state, produto) {
       state.produtosNaSacola.push(produto)
+    },
+    removeProdutoDoCarrinho(state, produtoId) {
+      //nao mantém o item que tem o mesmo id
+      var atualizaSacola = state.produtosNaSacola.filter(item => produtoId != item.id)
+      state.produtosNaSacola = atualizaSacola
     }
   },
   //actions são responsáveis por alterar as mutations que por sua vez alteram o state
@@ -31,6 +36,10 @@ export default createStore({
 
     addProdutoAoCarrinho({ commit }, produto) {
       commit('addProdutoAoCarrinho', produto)
+    },
+
+    removeProdutoDoCarrinho({ commit }, produtoId) {
+      commit('removeProdutoDoCarrinho', produtoId)
     }
 
   },
