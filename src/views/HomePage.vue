@@ -34,6 +34,12 @@ export default {
     }
   },
 
+  computed: {
+    produtos() {
+      return this.$store.produtos
+    }
+  },
+
   methods: {
    
   }
