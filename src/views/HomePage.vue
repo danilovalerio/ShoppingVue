@@ -12,8 +12,9 @@
         v-if="!produtoNoCarrinho(produto)"
         @click="addProdutoAoCarrinho(produto)">Adicionar ao carrinho</button>
         <button 
-        v-else class="remove"
-        @click="addProdutoAoCarrinho(produto)">Remover do carrinho</button>
+        v-else 
+        class="remove"
+        @click="removeProdutoDoCarrinho(produto.id)">Remover do carrinho</button>
       </div>
     </div>
   </div>
@@ -46,9 +47,14 @@ export default {
       this.$store.dispatch('addProdutoAoCarrinho', produto)
       console.log(this.$store.state.produtosNaSacola)
     },
+
     produtoNoCarrinho(produto) {
       return this.produtosNaSacola.find(item => item.id == produto.id)
-    }
+    },
+
+    removeProdutoDoCarrinho(produtoId){
+      this.$store.dispatch('removeProdutoDoCarrinho', produtoId)
+    },
    
   }
 }
