@@ -12,13 +12,19 @@ export default createStore({
       console.log(produtos)
       state.produtos = produtos
     },
+    carregarSacola(state, produtos) {
+      console.log(produtos)
+      state.produtosNaSacola = produtos
+    },
     addProdutoAoCarrinho(state, produto) {
       state.produtosNaSacola.push(produto)
+      localStorage.setItem("produtosNaSacola", JSON.stringify(state.produtosNaSacola))
     },
     removeProdutoDoCarrinho(state, produtoId) {
       //nao mantém o item que tem o mesmo id
       var atualizaSacola = state.produtosNaSacola.filter(item => produtoId != item.id)
       state.produtosNaSacola = atualizaSacola
+      localStorage.setItem("produtosNaSacola", JSON.stringify(state.produtosNaSacola))
     }
   },
   //actions são responsáveis por alterar as mutations que por sua vez alteram o state
@@ -32,6 +38,17 @@ export default createStore({
           //console.log(response.data)
           commit('carregarProdutos', response.data)
         })
+    },
+
+    carregarSacola({ commit }) {
+
+      if (localStorage.getItem("produtosNaSacola")) {
+        commit(
+          'carregarSacola', 
+          JSON.parse(localStorage.getItem("produtosNaSacola")))
+
+      }
+        
     },
 
     addProdutoAoCarrinho({ commit }, produto) {
