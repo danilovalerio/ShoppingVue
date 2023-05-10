@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Essa página é dos produtos</h1>
+    <h1>Essa página é dos produtos, foi atualizada</h1>
   </div>
 </template>
 

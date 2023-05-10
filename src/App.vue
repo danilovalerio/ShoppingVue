@@ -12,6 +12,7 @@ export default {
 
     created() {
         this.$store.dispatch('carregarProdutos')
+        this.$store.dispatch('carregarSacola')
     },
     computed: {
         totalDeItensNaSacola() {
