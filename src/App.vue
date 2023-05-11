@@ -1,5 +1,6 @@
 <template>
 <div id="nav">
+    <router-link to="/login">Login</router-link> -
     <router-link to="/">Início</router-link> -
     <router-link to="/basket">Carrinho ({{this.totalDeItensNaSacola.length}})</router-link> -
     <router-link to="/produto">Produto</router-link>
