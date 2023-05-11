@@ -33,6 +33,7 @@ export default createStore({
     carregarProdutos({ commit }) {
       axios
         .get('https://fakestoreapi.com/products')
+        //.get('http://localhost:8080/api/titulos')
         .then(response => {
           //para usar a mutacao 'carregarProdutos' tem que ser o commit
           //console.log(response.data)
@@ -44,11 +45,11 @@ export default createStore({
 
       if (localStorage.getItem("produtosNaSacola")) {
         commit(
-          'carregarSacola', 
+          'carregarSacola',
           JSON.parse(localStorage.getItem("produtosNaSacola")))
 
       }
-        
+
     },
 
     addProdutoAoCarrinho({ commit }, produto) {
@@ -56,7 +57,7 @@ export default createStore({
     },
 
     removeProdutoDoCarrinho({ commit }, produtoId) {
-      if(confirm('Deseja mesmo remover item do carrinho?')) {
+      if (confirm('Deseja mesmo remover item do carrinho?')) {
         commit('removeProdutoDoCarrinho', produtoId)
       }
     }
